@@ -97,7 +97,7 @@ public class AuthenticationRestControllerV1 {
 
         userRepository.save(user);
 
-        return ResponseEntity.ok(new ApiResponse("User registered successfully!", true));
+        return ResponseEntity.ok(new ApiResponse(String.valueOf(randomNumber), true));
     }
 
     @PostMapping("/emailPermission")
