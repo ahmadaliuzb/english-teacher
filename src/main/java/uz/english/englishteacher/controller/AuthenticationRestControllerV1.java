@@ -8,10 +8,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uz.english.englishteacher.dto.*;
 import uz.english.englishteacher.entity.User;
 import uz.english.englishteacher.exception.NotFoundException;
@@ -25,6 +22,7 @@ import java.util.*;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/auth")
 public class AuthenticationRestControllerV1 {
 
@@ -93,7 +91,6 @@ public class AuthenticationRestControllerV1 {
         user.setVerificationCode(String.valueOf(randomNumber));
         user.setEnabled(false);
         emailSenderService.sendSimpleEmail(user.getEmail(), "From English Teacher", String.valueOf(randomNumber));
-
 
         userRepository.save(user);
 
