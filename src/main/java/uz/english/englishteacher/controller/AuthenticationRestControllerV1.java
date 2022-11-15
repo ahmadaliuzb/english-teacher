@@ -22,7 +22,7 @@ import java.util.*;
 
 
 @RestController
-@CrossOrigin
+
 @RequestMapping("/api/auth")
 public class AuthenticationRestControllerV1 {
 
@@ -45,6 +45,7 @@ public class AuthenticationRestControllerV1 {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @CrossOrigin
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody AuthenticationRequestDto authenticationRequestDto) {
 
@@ -64,6 +65,7 @@ public class AuthenticationRestControllerV1 {
         ));
     }
 
+    @CrossOrigin
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserDto userDto) {
         if (userRepository.existsByUsername(userDto.getUsername())) {
